@@ -21,9 +21,9 @@ function Controls(props: {showButton: Boolean}) {
           <EndCall />
         ) : (
           <>
-            <LocalAudioMute />
-            <LocalVideoMute />
             <SwitchCamera />
+            <LocalVideoMute />
+            <LocalAudioMute />
             <EndCall />
           </>
         )}

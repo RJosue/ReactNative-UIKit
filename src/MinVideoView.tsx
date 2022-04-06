@@ -1,11 +1,12 @@
 import React, {useState, useContext} from 'react';
-import {View, TouchableOpacity, Image} from 'react-native';
+import {View, TouchableOpacity, Image, Text, BackHandler} from 'react-native';
 import {RtcLocalView, RtcRemoteView, VideoRenderMode} from 'react-native-agora';
 import styles from './Style';
 import icons from './Controls/Icons';
 import RemoteControls from './Controls/RemoteControls';
 import PropsContext from './PropsContext';
 import {UidInterface} from './RtcContext';
+import DisableCamaraScreen from './DisableCamaraScreen'
 
 const LocalView = RtcLocalView.SurfaceView;
 const RemoteView = RtcRemoteView.SurfaceView;
@@ -18,6 +19,7 @@ interface MinViewInterface {
 
 const MinVideoView: React.FC<MinViewInterface> = (props) => {
   const [overlay, setOverlay] = useState(false);
+
   const {styleProps} = useContext(PropsContext);
   const {
     minViewStyles,
@@ -36,7 +38,7 @@ const MinVideoView: React.FC<MinViewInterface> = (props) => {
       {showOverlay ? (
         <TouchableOpacity onPress={() => setOverlay(true)}>
           {props.user.uid === 'local' ? (
-            <LocalView
+                        !props.user.video ?  <DisableCamaraScreen /> : <LocalView
               style={{...styles.minView, ...(minViewStyles as object)}}
               renderMode={
                 renderModeProp ? renderModeProp : VideoRenderMode.Hidden
@@ -44,7 +46,7 @@ const MinVideoView: React.FC<MinViewInterface> = (props) => {
               zOrderMediaOverlay={true}
             />
           ) : (
-            <RemoteView
+            !props.user.video ?    <DisableCamaraScreen /> : <RemoteView
               style={{...styles.minView, ...(minViewStyles as object)}}
               uid={props.user.uid as number}
               renderMode={
