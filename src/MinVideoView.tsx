@@ -6,7 +6,7 @@ import icons from './Controls/Icons';
 import RemoteControls from './Controls/RemoteControls';
 import PropsContext from './PropsContext';
 import {UidInterface} from './RtcContext';
-import DisableCamaraScreen from './DisableCamaraScreen'
+import DisableCamaraScreen from './DisableCamaraScreen';
 
 const LocalView = RtcLocalView.SurfaceView;
 const RemoteView = RtcRemoteView.SurfaceView;
@@ -32,21 +32,26 @@ const MinVideoView: React.FC<MinViewInterface> = (props) => {
   const renderModeProp = videoMode?.min;
   const {minCloseBtnStyles} = remoteBtnStyles || {};
   const {showOverlay} = props || {};
-
   return (
     <View style={{marginRight: 5}}>
       {showOverlay ? (
         <TouchableOpacity onPress={() => setOverlay(true)}>
           {props.user.uid === 'local' ? (
-                        !props.user.video ?  <DisableCamaraScreen /> : <LocalView
-              style={{...styles.minView, ...(minViewStyles as object)}}
-              renderMode={
-                renderModeProp ? renderModeProp : VideoRenderMode.Hidden
-              }
-              zOrderMediaOverlay={true}
-            />
+            !props.user.video ? (
+              <DisableCamaraScreen />
+            ) : (
+              <LocalView
+                style={{...styles.minView, ...(minViewStyles as object)}}
+                renderMode={
+                  renderModeProp ? renderModeProp : VideoRenderMode.Hidden
+                }
+                zOrderMediaOverlay={true}
+              />
+            )
+          ) : !props.user.video ? (
+            <DisableCamaraScreen />
           ) : (
-            !props.user.video ?    <DisableCamaraScreen /> : <RemoteView
+            <RemoteView
               style={{...styles.minView, ...(minViewStyles as object)}}
               uid={props.user.uid as number}
               renderMode={
@@ -57,11 +62,19 @@ const MinVideoView: React.FC<MinViewInterface> = (props) => {
           )}
         </TouchableOpacity>
       ) : props.user.uid === 'local' ? (
-        <LocalView
-          style={{...styles.minView, ...(minViewStyles as object)}}
-          renderMode={renderModeProp ? renderModeProp : VideoRenderMode.Hidden}
-          zOrderMediaOverlay={true}
-        />
+        !props.user.video ? (
+          <DisableCamaraScreen />
+        ) : (
+          <LocalView
+            style={{...styles.minView, ...(minViewStyles as object)}}
+            renderMode={
+              renderModeProp ? renderModeProp : VideoRenderMode.Hidden
+            }
+            zOrderMediaOverlay={true}
+          />
+        )
+      ) : !props.user.video ? (
+        <DisableCamaraScreen />
       ) : (
         <RemoteView
           style={{...styles.minView, ...(minViewStyles as object)}}

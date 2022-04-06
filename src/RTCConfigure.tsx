@@ -91,6 +91,18 @@ const RtcConfigure: React.FC<Partial<RtcPropsInterface>> = (props) => {
           console.log('new user joined!\n', action.value[0]);
         }
         break;
+      case 'UserMuteVideo':
+        const videoMuteRemote = (user: UidInterface) => {
+          if (user.uid === action.value[0]) {
+            user.video = !action.value[1];
+          }
+          return user;
+        };
+        stateUpdate = {
+          min: state.min.map(videoMuteRemote),
+          max: state.max.map(videoMuteRemote),
+        };
+        break;
       case 'UserOffline':
         if (
           state.max[0].uid === (action as ActionType<'UserOffline'>).value[0]
@@ -283,6 +295,15 @@ const RtcConfigure: React.FC<Partial<RtcPropsInterface>> = (props) => {
           //If local user leaves channel
           (dispatch as DispatchType<'LeaveChannel'>)({
             type: 'LeaveChannel',
+            value: args,
+          });
+        });
+
+        engine.current.addListener('UserMuteVideo', (...args) => {
+          // console.log(args)
+          // If local user leaves channel
+          (dispatch as DispatchType<'UserMuteVideo'>)({
+            type: 'UserMuteVideo',
             value: args,
           });
         });

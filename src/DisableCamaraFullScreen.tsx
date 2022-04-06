@@ -1,37 +1,50 @@
-import React from 'react'
-import { View, StyleSheet, Text } from 'react-native';
+import React from 'react';
+import {View, StyleSheet} from 'react-native';
+import {faUserAlt} from '@fortawesome/free-solid-svg-icons';
+
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+
+const size = 150;
+const iconSize = 50;
 
 const styles = StyleSheet.create({
-    root: {
-      flex: 1,
-      alignItems: 'center',
-      backgroundColor: 'white'
-    },
-    cameraContainer: {
-      height: '100%',
-      width: '100%',
-      borderRadius: 10,
-      backgroundColor: '#F4F4F4',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
+  root: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: 'white',
+  },
+  iconContainer: {
+    width: size,
+    height: size,
+    backgroundColor: '#C4C4C4',
+    borderRadius: size / 2,
+  },
+  icon: {
+    margin: (size - iconSize) / 2,
+  },
+  cameraContainer: {
+    height: '100%',
+    width: '100%',
+    borderRadius: 10,
+    backgroundColor: '#F4F4F4',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default function DisableCameraFullScreen() {
-    return (
-        <View
-      style={styles.root}
-    >
-        <View testID="cameraWithoutConfig" style={styles.cameraContainer}>
-          {/* <RoundIconButton
+  return (
+    <View style={styles.root}>
+      <View testID="cameraWithoutConfig" style={styles.cameraContainer}>
+        <View style={styles.iconContainer}>
+          <FontAwesomeIcon
             icon={faUserAlt}
-            iconColor='#000'
-            size={50}
-            customIconSize={22}
-            backgroundColor="#C4C4C4"
-          /> */}
-          <Text>img</Text>
+            color="#FFF"
+            size={iconSize}
+            style={styles.icon}
+          />
         </View>
+      </View>
     </View>
-      )
+  );
 }
