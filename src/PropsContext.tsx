@@ -1,3 +1,4 @@
+import {IconProp} from '@fortawesome/fontawesome-svg-core';
 import React from 'react';
 import {StyleProp, ViewStyle} from 'react-native';
 import {StreamFallbackOptions, VideoRenderMode} from 'react-native-agora';
@@ -293,35 +294,35 @@ export interface IconsInterface {
   /**
    * Icon for Camera/Video mute in on state
    */
-  videocam: string;
+  videocam: string | IconProp;
   /**
    * Icon for Camera/Video mute in off state
    */
-  videocamOff: string;
+  videocamOff: string | IconProp;
   /**
    * Icon for Mic/Audio mute in on state
    */
-  mic: string;
+  mic: string | IconProp;
   /**
    * Icon for Mic/Audio mute in off state
    */
-  micOff: string;
+  micOff: string | IconProp;
   /**
    * Icon to switch between device cameras
    */
-  switchCamera: string;
+  switchCamera: string | IconProp;
   /**
    * Icon to end the call
    */
-  callEnd: string;
+  callEnd: string | IconProp;
   /**
    * Icon to swap the min user to max view
    */
-  remoteSwap: string;
+  remoteSwap: string | IconProp;
   /**
    * Icon to close the overlay in floating layout
    */
-  close: string;
+  close: string | IconProp;
 }
 
 const initialValue: PropsInterface = {
