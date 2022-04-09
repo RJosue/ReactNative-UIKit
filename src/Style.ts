@@ -27,6 +27,7 @@ export default StyleSheet.create({
   minView: {
     width: 240,
     height: 135,
+    borderRadius: 10,
   },
   minContainer: {
     position: 'absolute',

@@ -29,18 +29,19 @@ function Controls(props: {showButton: Boolean}) {
         )}
       </View>
       {showButton ? (
-        <MaxUidConsumer>
-          {(users) => (
-            <View
-              style={{
-                ...styles.Controls,
-                bottom: styles.Controls.bottom + 70,
-                ...(maxViewRemoteBtnContainer as object),
-              }}>
-              <RemoteControls user={users[0]} showRemoteSwap={false} />
-            </View>
-          )}
-        </MaxUidConsumer>
+        // <MaxUidConsumer>
+        //   {(users) => (
+        //     <View
+        //       style={{
+        //         ...styles.Controls,
+        //         bottom: styles.Controls.bottom + 70,
+        //         ...(maxViewRemoteBtnContainer as object),
+        //       }}>
+        //       <RemoteControls user={users[0]} showRemoteSwap={false} />
+        //     </View>
+        //   )}
+        // </MaxUidConsumer>
+        <></>
       ) : (
         <></>
       )}

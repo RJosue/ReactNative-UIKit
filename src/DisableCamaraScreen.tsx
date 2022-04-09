@@ -9,9 +9,10 @@ const iconSize = 25;
 
 const styles = StyleSheet.create({
   root: {
-    flex: 1,
+    // flex: 1,
     alignItems: 'center',
     backgroundColor: 'white',
+    borderRadius: 10,
   },
   iconContainer: {
     width: size,
@@ -23,10 +24,7 @@ const styles = StyleSheet.create({
     margin: (size - iconSize) / 2,
   },
   cameraContainer: {
-    height: 160,
-    width: 125,
-    borderRadius: 10,
-    backgroundColor: '#F4F4F4',
+    height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -33,9 +33,9 @@ const MinVideoView: React.FC<MinViewInterface> = (props) => {
   const {minCloseBtnStyles} = remoteBtnStyles || {};
   const {showOverlay} = props || {};
   return (
-    <View style={{marginRight: 5}}>
+    <View style={{borderRadius: 10}}>
       {showOverlay ? (
-        <TouchableOpacity onPress={() => setOverlay(true)}>
+        <>
           {props.user.uid === 'local' ? (
             !props.user.video ? (
               <DisableCamaraScreen />
@@ -60,7 +60,7 @@ const MinVideoView: React.FC<MinViewInterface> = (props) => {
               zOrderMediaOverlay={true}
             />
           )}
-        </TouchableOpacity>
+        </>
       ) : props.user.uid === 'local' ? (
         !props.user.video ? (
           <DisableCamaraScreen />

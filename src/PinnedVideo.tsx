@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Dimensions, ScrollView} from 'react-native';
+import {Dimensions, ScrollView, View} from 'react-native';
 import MaxVideoView from './MaxVideoView';
 import MinVideoView from './MinVideoView';
 import {MinUidConsumer} from './MinUidContext';
@@ -18,7 +18,6 @@ const PinnedVideo: React.FC = () => {
     });
   });
 
-  // console.log(styleProps?.minViewContainer);
   return (
     <>
       <MaxUidConsumer>
@@ -28,9 +27,9 @@ const PinnedVideo: React.FC = () => {
           ) : null
         }
       </MaxUidConsumer>
-      <ScrollView
-        showsHorizontalScrollIndicator={false}
-        horizontal={true}
+      <View
+        // showsHorizontalScrollIndicator={false}
+        // horizontal={true}
         style={{
           ...styles.minContainer,
           width: width,
@@ -45,7 +44,7 @@ const PinnedVideo: React.FC = () => {
             )
           }
         </MinUidConsumer>
-      </ScrollView>
+      </View>
       {/* <LocalControls /> */}
     </>
   );
